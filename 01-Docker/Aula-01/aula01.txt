@@ -1,0 +1,50 @@
+Comandos básicos do Docker
+
+- `docker --version`: Verifica a versão do Docker instalada.
+- `docker info`: Exibe informações detalhadas sobre a instalação do Docker.
+
+- `docker pull <imagem>`: Baixa uma imagem do Docker Hub. Ex.: `docker pull nginx`
+- `docker images`: Lista imagens locais.
+
+- `docker run [opções] <imagem>`: Executa um container. Exemplos:
+	- `docker run --rm hello-world`  # executa e remove após término
+	- `docker run -d --name web -p 8080:80 nginx`  # executa em background e mapeia porta
+
+- `docker ps`: Lista containers em execução.
+- `docker ps -a`: Lista todos os containers (inclusive parados).
+
+- `docker stop <container>`: Para um container em execução.
+- `docker start <container>`: Inicia um container parado.
+- `docker restart <container>`: Reinicia um container.
+- `docker rm <container>`: Remove um container (use somente se parado).
+
+- `docker logs <container>`: Mostra logs do container.
+- `docker exec -it <container> /bin/bash`: Acessa um shell interativo dentro do container.
+
+- `docker build -t <nome:tag> .`: Constrói uma imagem a partir de um `Dockerfile` no diretório atual.
+- `docker tag <imagem> <repo>/<imagem>:<tag>`: Marca (tag) uma imagem para envio.
+- `docker push <repo>/<imagem>:<tag>`: Envia uma imagem para um registry (ex.: Docker Hub).
+
+- `docker rmi <imagem>`: Remove uma imagem local.
+
+- `docker volume ls`: Lista volumes.
+- `docker network ls`: Lista redes.
+- `docker inspect <container|imagem>`: Exibe detalhes em JSON sobre um container ou imagem.
+- `docker stats`: Mostra uso de recursos dos containers em tempo real.
+
+- `docker system prune`: Remove containers, redes, imagens e caches não utilizados (use com cuidado).
+
+Comandos úteis do Docker Compose
+
+- `docker-compose up -d`: Sobe serviços definidos em `docker-compose.yml` em background.
+- `docker-compose down`: Para e remove os serviços e redes criadas pelo Compose.
+
+Dicas rápidas:
+
+- Use `--rm` em `docker run` para limpar containers temporários automaticamente.
+- Prefira `docker-compose` para orquestrar múltiplos serviços localmente.
+- Confira permissões e que o daemon do Docker está ativo se comandos falharem (ex.: `systemctl status docker`).
+
+Referências rápidas:
+- Documentação oficial: https://docs.docker.com/
+
