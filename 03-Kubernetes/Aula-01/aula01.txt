@@ -1,0 +1,49 @@
+Exemplos de comandos k3d
+
+1) Criar cluster básico
+Comando:
+k3d cluster create meu-cluster
+Descrição:
+Cria um cluster Kubernetes local chamado "meu-cluster" com as configurações padrão.
+
+2) Criar cluster com 2 agentes (workers)
+Comando:
+k3d cluster create meu-cluster --agents 2
+Descrição:
+Cria o cluster com 1 nó servidor e 2 nós agentes para simular um ambiente com mais de um worker.
+
+3) Criar cluster e expor aplicação na porta 8080
+Comando:
+k3d cluster create meu-cluster -p "8080:80@loadbalancer"
+Descrição:
+Mapeia a porta 8080 da máquina local para a porta 80 do load balancer do cluster.
+
+4) Listar clusters existentes
+Comando:
+k3d cluster list
+Descrição:
+Mostra todos os clusters criados com k3d e o status de cada um.
+
+5) Parar um cluster
+Comando:
+k3d cluster stop meu-cluster
+Descrição:
+Para a execução do cluster sem apagá-lo, permitindo iniciar novamente depois.
+
+6) Iniciar cluster parado
+Comando:
+k3d cluster start meu-cluster
+Descrição:
+Inicia um cluster que foi parado anteriormente.
+
+7) Excluir um cluster
+Comando:
+k3d cluster delete meu-cluster
+Descrição:
+Remove completamente o cluster e seus recursos do ambiente local.
+
+8) Ver nós do cluster com kubectl
+Comando:
+kubectl get nodes
+Descrição:
+Lista os nós do cluster Kubernetes atual para validar se ele está ativo e saudável.
