@@ -87,3 +87,37 @@ kubectl delete -f pod.yaml
 pod "meupod1" deleted from default namespace
 pod "meupod2" deleted from default namespace
 ```
+
+### Aula 04 - ReplicaSet
+
+Nesta aula aplicou-se um `ReplicaSet` para demonstrar controle de réplicas e observação continua de pods e ReplicaSets.
+
+- Comando executado:
+	- `kubectl apply -f Aula-04/replicaset.yaml && watch 'kubectl get po,rs'`
+
+- O que faz:
+	- Aplica o manifesto do `ReplicaSet` definido em `Aula-04/replicaset.yaml` e inicia um monitor em tempo real exibindo os pods (`po`) e os ReplicaSets (`rs`).
+
+Arquivo usado nesta aula:
+- `Aula-04/replicaset.yaml`
+
+Próximos passos sugeridos:
+- Verificar o status com `kubectl get rs` e `kubectl get pods`.
+- Converter o `ReplicaSet` para um `Deployment` para facilitar atualizações e rollouts.
+- Criar um `Service` para expor as réplicas quando necessário.
+
+Exemplo de saída detalhada com `kubectl get po -o wide`:
+
+```
+NAME                  READY   STATUS    RESTARTS   AGE     IP          NODE               NOMINATED NODE   READINESS GATES
+meupod1               1/1     Running   0          13m     10.42.2.4   k3d-lab-server-2   <none>           <none>
+meureplicaset-4zxgf   1/1     Running   0          6m13s   10.42.1.4   k3d-lab-server-1   <none>           <none>
+meureplicaset-5ppvw   1/1     Running   0          6m13s   10.42.3.5   k3d-lab-agent-0    <none>           <none>
+meureplicaset-8bclw   1/1     Running   0          6m13s   10.42.3.4   k3d-lab-agent-0    <none>           <none>
+meureplicaset-ftg2z   1/1     Running   0          6m13s   10.42.2.5   k3d-lab-server-2   <none>           <none>
+meureplicaset-gq5rj   1/1     Running   0          6m13s   10.42.4.4   k3d-lab-agent-1    <none>           <none>
+meureplicaset-m7vnc   1/1     Running   0          6m13s   10.42.0.8   k3d-lab-server-0   <none>           <none>
+meureplicaset-pgt2c   1/1     Running   0          6m13s   10.42.4.5   k3d-lab-agent-1    <none>           <none>
+meureplicaset-rn2dt   1/1     Running   0          6m13s   10.42.1.5   k3d-lab-server-1   <none>           <none>
+meureplicaset-vbvp4   1/1     Running   0          6m13s   10.42.5.4   k3d-lab-agent-2    <none>           <none>
+```
